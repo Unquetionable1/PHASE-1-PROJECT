@@ -1,4 +1,31 @@
 document.addEventListener('DOMContentLoaded',()=>{
+
+    document.getElementById('search-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        var searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+        
+        // Fetch the JSON data
+        fetch('data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Filter the data based on the search query
+            var results = data.filter(item => {
+                return item.name.toLowerCase().includes(searchQuery) || item.email.toLowerCase().includes(searchQuery);
+            });
+            displayResults(results);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    });
+
+
     getImage()
     const breed = document.getElementById('breed');
     breed.addEventListener('click',()=>{
@@ -43,7 +70,7 @@ function getBreed(){
             ul.innerHTML +=`<li>Name: ${breeds.name}.<hr> Description: ${breeds.description}.`
             div.appendChild(ul);
 
-            const li  
+            const li = document.querySelector('li')
             li.addEventListener('click',(e)=>{
                 e.preventDefault();
                 showImg(breeds);
@@ -55,7 +82,11 @@ function getBreed(){
 }
 
 function showImg(breeds){
-    fetch(`https://api.thecatapi.com/v1/images/${breeds.reference_image_id}?sub_id=`)
+    fetch(`https://api.thecatapi.com/v1/images/${breeds.reference_image_id}?sub_id=`,{
+        headers:{
+            'x-api-key':'live_NIMRpUfCcUpq1LBrO8QwGcYM5Zo55ydh0RkIpf4Cvkivt864j8BljpBLa2jPNahZ'
+        }
+    })
     .then(res=>res.json())
     .then(img=>{
         const view=document.getElementById('img');
@@ -63,9 +94,11 @@ function showImg(breeds){
             image.src=`${image.url}`;
             image.height="300"
             image.width='300'
-            view.appendChild(img);
+            view.appendChild(image);
     })
     .catch(error=>console.log(error))
 }
+
+
 
 
