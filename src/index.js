@@ -60,7 +60,7 @@ function getBreed(){
     .then(res=>{
         if(!res.ok){
             new Error('You have a request error')
-        }
+        }nn
         return res.json();
     })
     .then(breed => {
