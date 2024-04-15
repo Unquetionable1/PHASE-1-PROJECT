@@ -43,6 +43,7 @@ function getBreed(){
             ul.innerHTML +=`<li>Name: ${breeds.name}.<hr> Description: ${breeds.description}.`
             div.appendChild(ul);
 
+            const li  
             li.addEventListener('click',(e)=>{
                 e.preventDefault();
                 showImg(breeds);
@@ -58,8 +59,13 @@ function showImg(breeds){
     .then(res=>res.json())
     .then(img=>{
         const view=document.getElementById('img');
-        view.innerHTML=
+        const image=document.createElement('img');
+            image.src=`${image.url}`;
+            image.height="300"
+            image.width='300'
+            view.appendChild(img);
     })
+    .catch(error=>console.log(error))
 }
 
 
