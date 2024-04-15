@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         .then(data => {
             // Filter the data based on the search query
             let results = data.filter(item => {
-                return item.name.toLowerCase().includes(searchQuery)
+                return item.name.trim().toLowerCase().includes(searchQuery)
             });
             displayResults(results);
         })
@@ -82,8 +82,8 @@ function getBreed(){
 }
 
 function showImg(reference_image_id){
-    fetch(`https://api.thecatapi.com/v1/images/${reference_image_id}?sub_id=`,{
-        headers:{
+   fetch(`https://api.thecatapi.com/v1/images/${reference_image_id}?sub_id=`,{
+         headers:{
             'x-api-key':'live_NIMRpUfCcUpq1LBrO8QwGcYM5Zo55ydh0RkIpf4Cvkivt864j8BljpBLa2jPNahZ'
         }
     })
@@ -111,6 +111,7 @@ function displayResults(results) {
         let resultList = document.createElement('ul');
         results.forEach(item => {
             let listItem = document.createElement('li');
+            listItem.innerHTML=""
             listItem.innerHTML = `<hr>Name:${item.name}<hr>Description: ${item.description} `
             resultList.appendChild(listItem);
         });
