@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         let searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
         
         // Fetch the JSON data
-        fetch('')
+        fetch('https://api.thecatapi.com/v1/breeds/search?q=air&attach_image=1')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         .then(data => {
             // Filter the data based on the search query
             let results = data.filter(item => {
-                return item.name.toLowerCase().includes(searchQuery) || item.email.toLowerCase().includes(searchQuery);
+                return item.name.toLowerCase().includes(searchQuery)
             });
             displayResults(results);
         })
@@ -101,7 +101,7 @@ function showImg(breeds){
 
 
 function displayResults(results) {
-    let resultsContainer = document.getElementById('search-results');
+    let resultsContainer = document.getElementById('list');
     resultsContainer.innerHTML = ''; // Clear previous results
     
     if (results.length === 0) {
@@ -110,7 +110,7 @@ function displayResults(results) {
         let resultList = document.createElement('ul');
         results.forEach(item => {
             let listItem = document.createElement('li');
-            listItem.textContent = 'Name: ' + item.name + 
+            listItem.innerHTML = `<hr>Name:${item.name}<hr>Description: ${item.description} `
             resultList.appendChild(listItem);
         });
         resultsContainer.appendChild(resultList);

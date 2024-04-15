@@ -7,7 +7,11 @@ button {
 }
 
 .container > div {
+    background-color: orange;
     width: 50%;
+    padding: 50px;
+    border-color: aqua;
+    border-width: 10px;
 }
 
 .container > div > .tabs{
@@ -25,4 +29,16 @@ button {
 
 li {
     background-color: brown;
+}
+
+h1{
+    text-align: center;
+}
+
+body {
+    background-color: black;
+}
+
+textarea{
+    background-color: aqua;
 }

@@ -11,15 +11,18 @@
     <div class="header">
         <h1>Pick your favorite cat</h1>
     </div>
-    <div class="container">
+    <div class="container" style="background-color:peru;">
         <div>
             
             <div class="tabs" id="tabs">
-                <form id="search-form">
-                    <label for="search-input">Search cat breed:</label>
-                    <input type="text" id="search-input" name="searchQuery">
-                    <button type="submit">Search</button>
-                </form>
+                <div style="border-color: azure;">
+                    <form id="search-form">
+                        <label for="search-input">Search cat breed:</label>
+                        <input type="text" id="search-input" name="searchQuery">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+
                 <p>View random images:</p>
                 <button id="breed">Breed</button>
                 <div class="list" id="list">
@@ -29,9 +32,9 @@
         </div>
         
         <div>
-            <div id="view">
-                <div id="img"></div>
+            <div id="search-results">
             </div>
+            <div id="view"></div>
         </div>
     </div>
 </body>
