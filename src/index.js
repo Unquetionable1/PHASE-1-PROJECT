@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     document.getElementById('search-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent default form submission
         
-        var searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+        let searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
         
         // Fetch the JSON data
-        fetch('data.json')
+        fetch('')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         })
         .then(data => {
             // Filter the data based on the search query
-            var results = data.filter(item => {
+            let results = data.filter(item => {
                 return item.name.toLowerCase().includes(searchQuery) || item.email.toLowerCase().includes(searchQuery);
             });
             displayResults(results);
@@ -101,16 +101,16 @@ function showImg(breeds){
 
 
 function displayResults(results) {
-    var resultsContainer = document.getElementById('search-results');
+    let resultsContainer = document.getElementById('search-results');
     resultsContainer.innerHTML = ''; // Clear previous results
     
     if (results.length === 0) {
         resultsContainer.textContent = 'No results found';
     } else {
-        var resultList = document.createElement('ul');
+        let resultList = document.createElement('ul');
         results.forEach(item => {
-            var listItem = document.createElement('li');
-            listItem.textContent = 'Name: ' + item.name + ', Email: ' + item.email;
+            let listItem = document.createElement('li');
+            listItem.textContent = 'Name: ' + item.name + 
             resultList.appendChild(listItem);
         });
         resultsContainer.appendChild(resultList);
