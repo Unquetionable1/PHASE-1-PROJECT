@@ -1,0 +1,28 @@
+button {
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+}
+
+.container > div {
+    width: 50%;
+}
+
+.container > div > .tabs{
+    float: left;
+}
+
+.container > div ,img {
+    border-radius: 9px;
+}
+
+.header {
+    background-color: cadetblue;
+    border-radius: 5px;
+}
+
+li {
+    background-color: brown;
+}
