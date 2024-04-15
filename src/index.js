@@ -100,5 +100,20 @@ function showImg(breeds){
 }
 
 
-
+function displayResults(results) {
+    var resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; // Clear previous results
+    
+    if (results.length === 0) {
+        resultsContainer.textContent = 'No results found';
+    } else {
+        var resultList = document.createElement('ul');
+        results.forEach(item => {
+            var listItem = document.createElement('li');
+            listItem.textContent = 'Name: ' + item.name + ', Email: ' + item.email;
+            resultList.appendChild(listItem);
+        });
+        resultsContainer.appendChild(resultList);
+    }
+}
 
