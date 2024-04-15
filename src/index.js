@@ -58,6 +58,7 @@ function showImg(breeds){
     .then(res=>res.json())
     .then(img=>{
         const view=document.getElementById('img');
+        view.innerHTML=
     })
 }
 
