@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     document.getElementById('search-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent default form submission
         
-        let searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+        let searchQuery = document.getElementById('search-input').value.toLowerCase();
         
         // Fetch the JSON data
         fetch('https://api.thecatapi.com/v1/breeds/search?q=air&attach_image=1')
@@ -73,7 +73,7 @@ function getBreed(){
             const li = document.querySelector('li')
             li.addEventListener('click',(e)=>{
                 e.preventDefault();
-                showImg(breeds);
+                showImg(breeds.reference_image_id);
             })
 
         });
@@ -81,17 +81,18 @@ function getBreed(){
 
 }
 
-function showImg(breeds){
-    fetch(`https://api.thecatapi.com/v1/images/${breeds.reference_image_id}?sub_id=`,{
+function showImg(reference_image_id){
+    fetch(`https://api.thecatapi.com/v1/images/${reference_image_id}?sub_id=`,{
         headers:{
             'x-api-key':'live_NIMRpUfCcUpq1LBrO8QwGcYM5Zo55ydh0RkIpf4Cvkivt864j8BljpBLa2jPNahZ'
         }
     })
     .then(res=>res.json())
     .then(img=>{
-        const view=document.getElementById('img');
+        const view=document.getElementById('view');
+        view.co
         const image=document.createElement('img');
-            image.src=`${image.url}`;
+            image.src=image.url;
             image.height="300"
             image.width='300'
             view.appendChild(image);
@@ -110,10 +111,15 @@ function displayResults(results) {
         let resultList = document.createElement('ul');
         results.forEach(item => {
             let listItem = document.createElement('li');
-            listItem.innerHTML = `<hr>Name:${item.name}<hr>Description: ${item.description} `
+            listItem.innerHTML = `<hr>Name:${item.name}<hr>Description: ${item.description}
+            <img src="https://api.thecatapi.com/v1/images/${item.reference_image_id}?sub_id="
+            height="300" width="300"> `
             resultList.appendChild(listItem);
         });
+
+        
         resultsContainer.appendChild(resultList);
+
     }
 }
 
