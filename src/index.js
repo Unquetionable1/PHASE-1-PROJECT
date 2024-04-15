@@ -54,7 +54,11 @@ function getBreed(){
 }
 
 function showImg(breeds){
-    fetch
+    fetch(`https://api.thecatapi.com/v1/images/${breeds.reference_image_id}?sub_id=`)
+    .then(res=>res.json())
+    .then(img=>{
+        const view=document.getElementById('img');
+    })
 }
 
 
