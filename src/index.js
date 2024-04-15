@@ -111,9 +111,7 @@ function displayResults(results) {
         let resultList = document.createElement('ul');
         results.forEach(item => {
             let listItem = document.createElement('li');
-            listItem.innerHTML = `<hr>Name:${item.name}<hr>Description: ${item.description}
-            <img src="https://api.thecatapi.com/v1/images/${item.reference_image_id}?sub_id="
-            height="300" width="300"> `
+            listItem.innerHTML = `<hr>Name:${item.name}<hr>Description: ${item.description} `
             resultList.appendChild(listItem);
         });
 
