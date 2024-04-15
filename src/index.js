@@ -40,13 +40,21 @@ function getBreed(){
         breed.forEach(breeds => {
             let ul = document.createElement('ul');
             let div = document.getElementById('list')
-            ul.innerHTML +=`<li>Name: ${breeds.name}.<hr> Description: ${breeds.description}.
-            </li>.<button id='img>View image</button>`
+            ul.innerHTML +=`<li>Name: ${breeds.name}.<hr> Description: ${breeds.description}.`
             div.appendChild(ul);
+
+            li.addEventListener('click',(e)=>{
+                e.preventDefault();
+                showImg(breeds);
+            })
 
         });
     })
 
+}
+
+function showImg(breeds){
+    fetch
 }
 
 
